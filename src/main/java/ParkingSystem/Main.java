@@ -34,12 +34,15 @@ public class Main extends javax.swing.JFrame {
                 .getResultList();
 
         DefaultTableModel model = (DefaultTableModel) TableUsers.getModel();
-        int count = model.getColumnCount();
 
-        
-        for (int i = 0; i < count; i++) {
-            System.out.print(model.getColumnName(count));
+        for (User user : users) {
+            //actual data for the table in a 2d array
+            Object[] data = new Object[]{
+                user.getId().toString(), user.getName(), user.getEmail(), user.getCreatedOn()};
+            model.addRow(data);
         }
+
+        TableUsers.setModel(model);
 //        model.addRow(users.toArray());
 ////        TableUsers.setModel(model);
     }
@@ -423,21 +426,23 @@ public class Main extends javax.swing.JFrame {
 
         TableUsers.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+
             },
             new String [] {
                 "ID", "Nombre", "Email", "Alta"
             }
-        ));
+        ) {
+            Class[] types = new Class [] {
+                java.lang.Integer.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
+            };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
+        });
         jScrollPane1.setViewportView(TableUsers);
         if (TableUsers.getColumnModel().getColumnCount() > 0) {
-            TableUsers.getColumnModel().getColumn(0).setHeaderValue("ID");
-            TableUsers.getColumnModel().getColumn(1).setHeaderValue("Nombre");
-            TableUsers.getColumnModel().getColumn(2).setHeaderValue("Email");
-            TableUsers.getColumnModel().getColumn(3).setHeaderValue("Alta");
+            TableUsers.getColumnModel().getColumn(0).setPreferredWidth(3);
         }
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
