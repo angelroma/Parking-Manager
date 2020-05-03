@@ -33,6 +33,7 @@ import javax.xml.bind.annotation.XmlTransient;
 @XmlRootElement
 @NamedQueries({
     @NamedQuery(name = "Parkingspace.findAll", query = "SELECT p FROM Parkingspace p"),
+        @NamedQuery(name = "Parkingspace.findAllAailable", query = "SELECT p FROM Parkingspace p WHERE p.occupied = 0"),
     @NamedQuery(name = "Parkingspace.findById", query = "SELECT p FROM Parkingspace p WHERE p.id = :id"),
     @NamedQuery(name = "Parkingspace.findByOccupied", query = "SELECT p FROM Parkingspace p WHERE p.occupied = :occupied"),
     @NamedQuery(name = "Parkingspace.findByCreatedOn", query = "SELECT p FROM Parkingspace p WHERE p.createdOn = :createdOn"),

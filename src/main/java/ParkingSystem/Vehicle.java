@@ -34,7 +34,8 @@ import javax.xml.bind.annotation.XmlTransient;
 @Table(name = "vehicle")
 @XmlRootElement
 @NamedQueries({
-    @NamedQuery(name = "Vehicle.findAll", query = "SELECT v FROM Vehicle v"),
+    @NamedQuery(name = "Vehicle.findAll", query = "SELECT v FROM Vehicle v"),      
+    @NamedQuery(name = "Vehicle.findAllBySpace", query = "SELECT v FROM Vehicle v WHERE v.parkingSpaceID IS NOT NULL"),   
     @NamedQuery(name = "Vehicle.findById", query = "SELECT v FROM Vehicle v WHERE v.id = :id"),
     @NamedQuery(name = "Vehicle.findByColor", query = "SELECT v FROM Vehicle v WHERE v.color = :color"),
     @NamedQuery(name = "Vehicle.findByBrand", query = "SELECT v FROM Vehicle v WHERE v.brand = :brand"),
@@ -42,6 +43,7 @@ import javax.xml.bind.annotation.XmlTransient;
     @NamedQuery(name = "Vehicle.findByCarriagePlate", query = "SELECT v FROM Vehicle v WHERE v.carriagePlate = :carriagePlate"),
     @NamedQuery(name = "Vehicle.findByCreatedOn", query = "SELECT v FROM Vehicle v WHERE v.createdOn = :createdOn"),
     @NamedQuery(name = "Vehicle.findByFinishedOn", query = "SELECT v FROM Vehicle v WHERE v.finishedOn = :finishedOn")})
+
 public class Vehicle implements Serializable {
 
     private static final long serialVersionUID = 1L;

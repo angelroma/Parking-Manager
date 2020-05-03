@@ -6,10 +6,13 @@
 package ParkingSystem;
 
 //import ParkingSystem.Model.User;
+import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
+import javax.swing.ComboBoxModel;
 import javax.swing.JPanel;
 import javax.swing.table.DefaultTableModel;
 
@@ -24,7 +27,10 @@ public class Main extends javax.swing.JFrame {
      */
     public Main() {
         initComponents();
+        initData();
+    }
 
+    public void initData() {
         EntityManagerFactory emfactory = Persistence.createEntityManagerFactory("ParkingSystemPU");
 
         EntityManager entitymanager = emfactory.createEntityManager();
@@ -33,18 +39,50 @@ public class Main extends javax.swing.JFrame {
         List<User> users = entitymanager.createNamedQuery("User.findAll", User.class)
                 .getResultList();
 
-        DefaultTableModel model = (DefaultTableModel) TableUsers.getModel();
+        List<Vehicle> vehicles = entitymanager.createNamedQuery("Vehicle.findAllBySpace", Vehicle.class)
+                .getResultList();
+
+        List<Parkingspace> parkingspaces = entitymanager.createNamedQuery("Parkingspace.findAll", Parkingspace.class)
+                .getResultList();
+
+        DefaultTableModel modelUser = (DefaultTableModel) TableUsers.getModel();
+        DefaultTableModel modelVehicle = (DefaultTableModel) TableVehicles.getModel();
+        DefaultTableModel modelParkingspace = (DefaultTableModel) TableParkincSpaces.getModel();
 
         for (User user : users) {
             //actual data for the table in a 2d array
             Object[] data = new Object[]{
                 user.getId().toString(), user.getName(), user.getEmail(), user.getCreatedOn()};
-            model.addRow(data);
+            modelUser.addRow(data);
         }
 
-        TableUsers.setModel(model);
-//        model.addRow(users.toArray());
-////        TableUsers.setModel(model);
+        for (Vehicle item : vehicles) {
+            //actual data for the table in a 2d array
+            Object[] data = new Object[]{
+                item.getId(), item.getBrand(), item.getModel(), item.getCarriagePlate(), item.getCreatedOn(), item.getParkingSpaceID()};
+            modelVehicle.addRow(data);
+        }
+
+        for (Parkingspace item : parkingspaces) {
+            //actual data for the table in a 2d array
+            Object[] data = new Object[]{
+                item.getId(), item.getOccupied(),};
+            modelParkingspace.addRow(data);
+        }
+
+        TableUsers.setModel(modelUser);
+        TableVehicles.setModel(modelVehicle);
+        TableParkincSpaces.setModel(modelParkingspace);
+
+        List<Parkingspace> parkingSpacesAvaliables = entitymanager.createNamedQuery("Parkingspace.findAllAailable", Parkingspace.class)
+                .getResultList();
+
+        String[] data = {};
+
+        parkingSpacesAvaliables.forEach((item) -> {
+            //actual data for the table in a 2d array
+            ComboBoxSpace.addItem(item.getId().toString());
+        });
     }
 
     /**
@@ -61,24 +99,24 @@ public class Main extends javax.swing.JFrame {
         jPanel6 = new javax.swing.JPanel();
         jButton3 = new javax.swing.JButton();
         jPanel7 = new javax.swing.JPanel();
-        jTextField4 = new javax.swing.JTextField();
-        jTextField9 = new javax.swing.JTextField();
-        jTextField10 = new javax.swing.JTextField();
+        TextFieldColor = new javax.swing.JTextField();
+        TextFieldBrand = new javax.swing.JTextField();
+        TextFieldModel = new javax.swing.JTextField();
         jLabel6 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
         jLabel13 = new javax.swing.JLabel();
         jLabel15 = new javax.swing.JLabel();
-        jTextField11 = new javax.swing.JTextField();
+        TextFieldPlates = new javax.swing.JTextField();
         jLabel14 = new javax.swing.JLabel();
         jLabel16 = new javax.swing.JLabel();
-        jComboBox1 = new javax.swing.JComboBox<>();
+        ComboBoxSpace = new javax.swing.JComboBox<>();
         jPanel9 = new javax.swing.JPanel();
         jLabel17 = new javax.swing.JLabel();
         jScrollPane2 = new javax.swing.JScrollPane();
         TableVehicles = new javax.swing.JTable();
         jPanel3_Spaces = new javax.swing.JPanel();
         jScrollPane3 = new javax.swing.JScrollPane();
-        jTable3 = new javax.swing.JTable();
+        TableParkincSpaces = new javax.swing.JTable();
         jPanel1_Users = new javax.swing.JPanel();
         jPanel2 = new javax.swing.JPanel();
         jButton1 = new javax.swing.JButton();
@@ -108,21 +146,21 @@ public class Main extends javax.swing.JFrame {
             }
         });
 
-        jTextField4.addActionListener(new java.awt.event.ActionListener() {
+        TextFieldColor.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField4ActionPerformed(evt);
+                TextFieldColorActionPerformed(evt);
             }
         });
 
-        jTextField9.addActionListener(new java.awt.event.ActionListener() {
+        TextFieldBrand.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField9ActionPerformed(evt);
+                TextFieldBrandActionPerformed(evt);
             }
         });
 
-        jTextField10.addActionListener(new java.awt.event.ActionListener() {
+        TextFieldModel.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField10ActionPerformed(evt);
+                TextFieldModelActionPerformed(evt);
             }
         });
 
@@ -134,9 +172,9 @@ public class Main extends javax.swing.JFrame {
 
         jLabel15.setText("Placa:");
 
-        jTextField11.addActionListener(new java.awt.event.ActionListener() {
+        TextFieldPlates.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField11ActionPerformed(evt);
+                TextFieldPlatesActionPerformed(evt);
             }
         });
 
@@ -152,31 +190,31 @@ public class Main extends javax.swing.JFrame {
                     .addComponent(jLabel15, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jTextField9)
-                    .addComponent(jTextField10)
-                    .addComponent(jTextField11)
+                    .addComponent(TextFieldBrand)
+                    .addComponent(TextFieldModel)
+                    .addComponent(TextFieldPlates)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel7Layout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, 347, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                        .addComponent(TextFieldColor, javax.swing.GroupLayout.PREFERRED_SIZE, 347, javax.swing.GroupLayout.PREFERRED_SIZE))))
         );
         jPanel7Layout.setVerticalGroup(
             jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel7Layout.createSequentialGroup()
                 .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(TextFieldColor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel7))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel6)
-                    .addComponent(jTextField9, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(TextFieldBrand, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jTextField10, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(TextFieldModel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel13))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jLabel15)
-                    .addComponent(jTextField11, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(TextFieldPlates, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -185,7 +223,7 @@ public class Main extends javax.swing.JFrame {
 
         jLabel16.setText("Cajón:");
 
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        ComboBoxSpace.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
         javax.swing.GroupLayout jPanel6Layout = new javax.swing.GroupLayout(jPanel6);
         jPanel6.setLayout(jPanel6Layout);
@@ -205,7 +243,7 @@ public class Main extends javax.swing.JFrame {
                             .addGroup(jPanel6Layout.createSequentialGroup()
                                 .addComponent(jLabel16)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(jComboBox1, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                                .addComponent(ComboBoxSpace, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                         .addGap(0, 0, Short.MAX_VALUE))))
         );
         jPanel6Layout.setVerticalGroup(
@@ -218,7 +256,7 @@ public class Main extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel16, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(ComboBoxSpace, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(74, 74, 74)
                 .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
@@ -231,22 +269,24 @@ public class Main extends javax.swing.JFrame {
 
         TableVehicles.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null}
             },
             new String [] {
-                "ID", "Nombre", "Email", "Alta"
+                "ID", "Marca", "Modelo", "Placas", "Color", "Alta", "Cajón"
             }
-        ));
+        ) {
+            Class[] types = new Class [] {
+                java.lang.Integer.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.Integer.class
+            };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
+        });
         jScrollPane2.setViewportView(TableVehicles);
-        if (TableVehicles.getColumnModel().getColumnCount() > 0) {
-            TableVehicles.getColumnModel().getColumn(0).setHeaderValue("ID");
-            TableVehicles.getColumnModel().getColumn(1).setHeaderValue("Nombre");
-            TableVehicles.getColumnModel().getColumn(2).setHeaderValue("Email");
-            TableVehicles.getColumnModel().getColumn(3).setHeaderValue("Alta");
-        }
 
         javax.swing.GroupLayout jPanel9Layout = new javax.swing.GroupLayout(jPanel9);
         jPanel9.setLayout(jPanel9Layout);
@@ -292,7 +332,7 @@ public class Main extends javax.swing.JFrame {
 
         jTabbedPanel1.addTab("Vehículos", jPanel2_Vehicles);
 
-        jTable3.setModel(new javax.swing.table.DefaultTableModel(
+        TableParkincSpaces.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null},
                 {null, null},
@@ -303,7 +343,7 @@ public class Main extends javax.swing.JFrame {
                 "ID", "Ocupado"
             }
         ));
-        jScrollPane3.setViewportView(jTable3);
+        jScrollPane3.setViewportView(TableParkincSpaces);
 
         javax.swing.GroupLayout jPanel3_SpacesLayout = new javax.swing.GroupLayout(jPanel3_Spaces);
         jPanel3_Spaces.setLayout(jPanel3_SpacesLayout);
@@ -542,23 +582,46 @@ public class Main extends javax.swing.JFrame {
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         // TODO add your handling code here:
+        EntityManagerFactory emfactory = Persistence.createEntityManagerFactory("ParkingSystemPU");
+
+        EntityManager entitymanager = emfactory.createEntityManager();
+        entitymanager.getTransaction().begin();
+
+        Finance finance = entitymanager.createQuery("Finance.findById", Finance.class).setParameter("id", 1).getSingleResult();
+
+        List<User> users = entitymanager.createNamedQuery("User.findAll", User.class)
+                .getResultList();
+
+        Vehicle vehicle = new Vehicle();
+
+        vehicle.setColor(TextFieldColor.getText());
+        vehicle.setBrand(TextFieldBrand.getText());
+        vehicle.setCarriagePlate(TextFieldPlates.getText());
+        vehicle.setModel(TextFieldModel.getText());
+        Date date = new Date();
+        vehicle.setCreatedOn(date);
+        vehicle.setFinanceID(finance);
+
+        Parkingspace space = entitymanager.createQuery("Parkingspace.findById", Parkingspace.class).setParameter("id", 1).getSingleResult();
+        vehicle.setParkingSpaceID(space);
+
     }//GEN-LAST:event_jButton3ActionPerformed
 
-    private void jTextField4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField4ActionPerformed
+    private void TextFieldColorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TextFieldColorActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField4ActionPerformed
+    }//GEN-LAST:event_TextFieldColorActionPerformed
 
-    private void jTextField9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField9ActionPerformed
+    private void TextFieldBrandActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TextFieldBrandActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField9ActionPerformed
+    }//GEN-LAST:event_TextFieldBrandActionPerformed
 
-    private void jTextField10ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField10ActionPerformed
+    private void TextFieldModelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TextFieldModelActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField10ActionPerformed
+    }//GEN-LAST:event_TextFieldModelActionPerformed
 
-    private void jTextField11ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField11ActionPerformed
+    private void TextFieldPlatesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TextFieldPlatesActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField11ActionPerformed
+    }//GEN-LAST:event_TextFieldPlatesActionPerformed
 
     /**
      * @param args the command line arguments
@@ -598,13 +661,18 @@ public class Main extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JComboBox<String> ComboBoxSpace;
     private javax.swing.JLabel Subtitle;
+    private javax.swing.JTable TableParkincSpaces;
     private javax.swing.JTable TableUsers;
     private javax.swing.JTable TableVehicles;
+    private javax.swing.JTextField TextFieldBrand;
+    private javax.swing.JTextField TextFieldColor;
+    private javax.swing.JTextField TextFieldModel;
+    private javax.swing.JTextField TextFieldPlates;
     private javax.swing.JLabel Title;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton3;
-    private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel14;
@@ -630,13 +698,8 @@ public class Main extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JTabbedPane jTabbedPanel1;
-    private javax.swing.JTable jTable3;
     private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField10;
-    private javax.swing.JTextField jTextField11;
     private javax.swing.JTextField jTextField2;
     private javax.swing.JTextField jTextField3;
-    private javax.swing.JTextField jTextField4;
-    private javax.swing.JTextField jTextField9;
     // End of variables declaration//GEN-END:variables
 }
