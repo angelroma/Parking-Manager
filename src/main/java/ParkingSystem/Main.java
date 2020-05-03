@@ -19,6 +19,7 @@ import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 import javax.swing.ComboBoxModel;
 import javax.swing.JPanel;
+import javax.swing.SwingUtilities;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -64,7 +65,7 @@ public class Main extends javax.swing.JFrame {
         for (Vehicle item : vehicles) {
             //actual data for the table in a 2d array
             Object[] data = new Object[]{
-                item.getId(), item.getBrand(), item.getModel(), item.getCarriagePlate(), item.getCreatedOn(), item.getParkingSpaceID()};
+                item.getId(), item.getBrand(), item.getModel(), item.getCarriagePlate(), item.getColor(), item.getCreatedOn(), item.getParkingSpaceID().getId()};
             modelVehicle.addRow(data);
         }
 
@@ -97,6 +98,9 @@ public class Main extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jDialog1 = new javax.swing.JDialog();
+        jLabel8 = new javax.swing.JLabel();
+        TextLabelReport = new javax.swing.JLabel();
         jTabbedPanel1 = new javax.swing.JTabbedPane();
         jPanel2_Vehicles = new javax.swing.JPanel();
         jPanel6 = new javax.swing.JPanel();
@@ -138,6 +142,34 @@ public class Main extends javax.swing.JFrame {
         TableUsers = new javax.swing.JTable();
         Title = new javax.swing.JLabel();
         Subtitle = new javax.swing.JLabel();
+
+        jLabel8.setFont(new java.awt.Font("Tahoma", 1, 36)); // NOI18N
+        jLabel8.setText("Reporte");
+
+        TextLabelReport.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        TextLabelReport.setText("jLabel9");
+        TextLabelReport.setVerticalAlignment(javax.swing.SwingConstants.TOP);
+
+        javax.swing.GroupLayout jDialog1Layout = new javax.swing.GroupLayout(jDialog1.getContentPane());
+        jDialog1.getContentPane().setLayout(jDialog1Layout);
+        jDialog1Layout.setHorizontalGroup(
+            jDialog1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jDialog1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jDialog1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jLabel8, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(TextLabelReport, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(244, Short.MAX_VALUE))
+        );
+        jDialog1Layout.setVerticalGroup(
+            jDialog1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jDialog1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel8)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(TextLabelReport, javax.swing.GroupLayout.DEFAULT_SIZE, 223, Short.MAX_VALUE)
+                .addContainerGap())
+        );
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -279,7 +311,7 @@ public class Main extends javax.swing.JFrame {
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.Integer.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.Integer.class
+                java.lang.Integer.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
             };
 
             public Class getColumnClass(int columnIndex) {
@@ -289,6 +321,11 @@ public class Main extends javax.swing.JFrame {
         jScrollPane2.setViewportView(TableVehicles);
 
         jButton2.setText("Sacar de cajon");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel9Layout = new javax.swing.GroupLayout(jPanel9);
         jPanel9.setLayout(jPanel9Layout);
@@ -576,6 +613,10 @@ public class Main extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void jTextField3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField3ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextField3ActionPerformed
+
     private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextField1ActionPerformed
@@ -584,13 +625,25 @@ public class Main extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextField2ActionPerformed
 
-    private void jTextField3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField3ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField3ActionPerformed
-
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void TextFieldPlatesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TextFieldPlatesActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_TextFieldPlatesActionPerformed
+
+    private void TextFieldModelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TextFieldModelActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_TextFieldModelActionPerformed
+
+    private void TextFieldBrandActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TextFieldBrandActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_TextFieldBrandActionPerformed
+
+    private void TextFieldColorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TextFieldColorActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_TextFieldColorActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         // TODO add your handling code here:
@@ -616,8 +669,8 @@ public class Main extends javax.swing.JFrame {
             java.sql.Date startDate = new java.sql.Date(calendar.getTime().getTime());
 
             // the mysql insert statement
-            String query = "INSERT INTO parkingcompany.vehicle (Color, Brand, Model, CarriagePlate, CreatedOn, ParkingSpace_ID, Finance_ID)"
-                    + " VALUES (?,?,?, ?, ?, ?, ?)";
+            String query = "INSERT INTO parkingcompany.vehicle (Color, Brand, Model, CarriagePlate, CreatedOn, ParkingSpace_ID)"
+                    + " VALUES (?,?,?, ?, ?, ?)";
 
             // create the mysql insert preparedstatement
             PreparedStatement preparedStmt = conn.prepareStatement(query);
@@ -627,33 +680,47 @@ public class Main extends javax.swing.JFrame {
             preparedStmt.setString(4, vehicle.getCarriagePlate());
             preparedStmt.setDate(5, startDate);
             preparedStmt.setInt(6, spaceId);
-            preparedStmt.setInt(7, 1);
 
             // execute the preparedstatement
             preparedStmt.execute();
+
+            String updateSpace = "UPDATE `parkingcompany`.`parkingspace` SET `Occupied` = 1 WHERE `ID` = ?";
+            PreparedStatement updateStmt = conn.prepareStatement(query);
+            updateStmt.setInt(1, spaceId);
+            updateStmt.executeUpdate();
 
             conn.close();
         } catch (Exception e) {
             System.err.println("Got an exception!");
             System.err.println(e.getMessage());
         }
+
+        SwingUtilities.updateComponentTreeUI(this.jTabbedPanel1);
+
+//        jTabbedPanel1.invalidate();
+//        jTabbedPanel1.validate();
+//        jTabbedPanel1.repaint();
     }//GEN-LAST:event_jButton3ActionPerformed
 
-    private void TextFieldColorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TextFieldColorActionPerformed
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_TextFieldColorActionPerformed
 
-    private void TextFieldBrandActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TextFieldBrandActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_TextFieldBrandActionPerformed
+        Report reportModel = new Report();
 
-    private void TextFieldModelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TextFieldModelActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_TextFieldModelActionPerformed
+        String report = "<html>Vehículo ID:" + reportModel.getVehicleID().getId()
+                + "<br/>"
+                + "Cajon: " + reportModel.getVehicleID().getParkingSpaceID().getId()
+                + "<br/>"
+                + "Tiempo total: " + reportModel.getTotalTime()
+                + "<br/>"
+                + "Precio total: " + reportModel.getTotalPrice()
+                + "<br/>"
+                + "Precio por hora 45 MXN</html>";
+        TextLabelReport.setText(report);
 
-    private void TextFieldPlatesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TextFieldPlatesActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_TextFieldPlatesActionPerformed
+        jDialog1.setVisible(true);
+
+    }//GEN-LAST:event_jButton2ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -702,10 +769,12 @@ public class Main extends javax.swing.JFrame {
     private javax.swing.JTextField TextFieldColor;
     private javax.swing.JTextField TextFieldModel;
     private javax.swing.JTextField TextFieldPlates;
+    private javax.swing.JLabel TextLabelReport;
     private javax.swing.JLabel Title;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
+    private javax.swing.JDialog jDialog1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel14;
@@ -718,6 +787,7 @@ public class Main extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel1_Users;
     private javax.swing.JPanel jPanel2;
