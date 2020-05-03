@@ -6,7 +6,12 @@
 package ParkingSystem;
 
 //import ParkingSystem.Model.User;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.Statement;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 import javax.persistence.EntityManager;
@@ -39,7 +44,7 @@ public class Main extends javax.swing.JFrame {
         List<User> users = entitymanager.createNamedQuery("User.findAll", User.class)
                 .getResultList();
 
-        List<Vehicle> vehicles = entitymanager.createNamedQuery("Vehicle.findAllBySpace", Vehicle.class)
+        List<Vehicle> vehicles = entitymanager.createNamedQuery("Vehicle.findAll", Vehicle.class)
                 .getResultList();
 
         List<Parkingspace> parkingspaces = entitymanager.createNamedQuery("Parkingspace.findAll", Parkingspace.class)
@@ -66,7 +71,7 @@ public class Main extends javax.swing.JFrame {
         for (Parkingspace item : parkingspaces) {
             //actual data for the table in a 2d array
             Object[] data = new Object[]{
-                item.getId(), item.getOccupied(),};
+                item.getId(), item.getOccupied() == true ? "Si" : "No"};
             modelParkingspace.addRow(data);
         }
 
@@ -74,10 +79,8 @@ public class Main extends javax.swing.JFrame {
         TableVehicles.setModel(modelVehicle);
         TableParkincSpaces.setModel(modelParkingspace);
 
-        List<Parkingspace> parkingSpacesAvaliables = entitymanager.createNamedQuery("Parkingspace.findAllAailable", Parkingspace.class)
+        List<Parkingspace> parkingSpacesAvaliables = entitymanager.createNamedQuery("Parkingspace.findAllAvailable", Parkingspace.class)
                 .getResultList();
-
-        String[] data = {};
 
         parkingSpacesAvaliables.forEach((item) -> {
             //actual data for the table in a 2d array
@@ -114,6 +117,7 @@ public class Main extends javax.swing.JFrame {
         jLabel17 = new javax.swing.JLabel();
         jScrollPane2 = new javax.swing.JScrollPane();
         TableVehicles = new javax.swing.JTable();
+        jButton2 = new javax.swing.JButton();
         jPanel3_Spaces = new javax.swing.JPanel();
         jScrollPane3 = new javax.swing.JScrollPane();
         TableParkincSpaces = new javax.swing.JTable();
@@ -192,10 +196,11 @@ public class Main extends javax.swing.JFrame {
                 .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(TextFieldBrand)
                     .addComponent(TextFieldModel)
-                    .addComponent(TextFieldPlates)
+                    .addComponent(TextFieldPlates, javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel7Layout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(TextFieldColor, javax.swing.GroupLayout.PREFERRED_SIZE, 347, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                        .addComponent(TextFieldColor, javax.swing.GroupLayout.PREFERRED_SIZE, 335, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap())
         );
         jPanel7Layout.setVerticalGroup(
             jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -221,9 +226,7 @@ public class Main extends javax.swing.JFrame {
         jLabel14.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         jLabel14.setText("Agregar vehículo:");
 
-        jLabel16.setText("Cajón:");
-
-        ComboBoxSpace.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        jLabel16.setText("Cajón disponible:");
 
         javax.swing.GroupLayout jPanel6Layout = new javax.swing.GroupLayout(jPanel6);
         jPanel6.setLayout(jPanel6Layout);
@@ -243,7 +246,7 @@ public class Main extends javax.swing.JFrame {
                             .addGroup(jPanel6Layout.createSequentialGroup()
                                 .addComponent(jLabel16)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(ComboBoxSpace, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                                .addComponent(ComboBoxSpace, javax.swing.GroupLayout.PREFERRED_SIZE, 186, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addGap(0, 0, Short.MAX_VALUE))))
         );
         jPanel6Layout.setVerticalGroup(
@@ -269,10 +272,7 @@ public class Main extends javax.swing.JFrame {
 
         TableVehicles.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null}
+
             },
             new String [] {
                 "ID", "Marca", "Modelo", "Placas", "Color", "Alta", "Cajón"
@@ -288,15 +288,18 @@ public class Main extends javax.swing.JFrame {
         });
         jScrollPane2.setViewportView(TableVehicles);
 
+        jButton2.setText("Sacar de cajon");
+
         javax.swing.GroupLayout jPanel9Layout = new javax.swing.GroupLayout(jPanel9);
         jPanel9.setLayout(jPanel9Layout);
         jPanel9Layout.setHorizontalGroup(
             jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel9Layout.createSequentialGroup()
+            .addGroup(jPanel9Layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
-                    .addComponent(jLabel17, javax.swing.GroupLayout.DEFAULT_SIZE, 348, Short.MAX_VALUE))
+                .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+                    .addComponent(jLabel17, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 348, Short.MAX_VALUE)
+                    .addComponent(jButton2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
         jPanel9Layout.setVerticalGroup(
@@ -305,7 +308,9 @@ public class Main extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(jLabel17)
                 .addGap(18, 18, 18)
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 235, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jButton2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
@@ -334,15 +339,20 @@ public class Main extends javax.swing.JFrame {
 
         TableParkincSpaces.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null},
-                {null, null},
-                {null, null},
-                {null, null}
+
             },
             new String [] {
                 "ID", "Ocupado"
             }
-        ));
+        ) {
+            Class[] types = new Class [] {
+                java.lang.Integer.class, java.lang.Byte.class
+            };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
+        });
         jScrollPane3.setViewportView(TableParkincSpaces);
 
         javax.swing.GroupLayout jPanel3_SpacesLayout = new javax.swing.GroupLayout(jPanel3_Spaces);
@@ -454,7 +464,7 @@ public class Main extends javax.swing.JFrame {
                 .addComponent(jLabel5)
                 .addGap(26, 26, 26)
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 174, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 121, Short.MAX_VALUE)
                 .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
@@ -480,7 +490,9 @@ public class Main extends javax.swing.JFrame {
                 return types [columnIndex];
             }
         });
+        TableUsers.setColumnSelectionAllowed(true);
         jScrollPane1.setViewportView(TableUsers);
+        TableUsers.getColumnModel().getSelectionModel().setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
         if (TableUsers.getColumnModel().getColumnCount() > 0) {
             TableUsers.getColumnModel().getColumn(0).setPreferredWidth(3);
         }
@@ -556,8 +568,8 @@ public class Main extends javax.swing.JFrame {
                 .addComponent(Title, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(Subtitle)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jTabbedPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 413, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(jTabbedPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 408, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
 
@@ -582,29 +594,49 @@ public class Main extends javax.swing.JFrame {
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         // TODO add your handling code here:
-        EntityManagerFactory emfactory = Persistence.createEntityManagerFactory("ParkingSystemPU");
-
-        EntityManager entitymanager = emfactory.createEntityManager();
-        entitymanager.getTransaction().begin();
-
-        Finance finance = entitymanager.createQuery("Finance.findById", Finance.class).setParameter("id", 1).getSingleResult();
-
-        List<User> users = entitymanager.createNamedQuery("User.findAll", User.class)
-                .getResultList();
-
         Vehicle vehicle = new Vehicle();
 
         vehicle.setColor(TextFieldColor.getText());
         vehicle.setBrand(TextFieldBrand.getText());
         vehicle.setCarriagePlate(TextFieldPlates.getText());
         vehicle.setModel(TextFieldModel.getText());
-        Date date = new Date();
-        vehicle.setCreatedOn(date);
-        vehicle.setFinanceID(finance);
 
-        Parkingspace space = entitymanager.createQuery("Parkingspace.findById", Parkingspace.class).setParameter("id", 1).getSingleResult();
-        vehicle.setParkingSpaceID(space);
+        int spaceId = Integer.parseInt(ComboBoxSpace.getSelectedItem().toString());
 
+        try {
+            // create a mysql database connection
+            String myDriver = "com.mysql.cj.jdbc.Driver";
+            String myUrl = "jdbc:mysql://localhost:3306/parkingcompany?useUnicode=true&serverTimezone=UTC";
+            Class.forName(myDriver);
+            Connection conn = DriverManager.getConnection(myUrl, "root", "Mente!0Unica");
+
+            // note that i'm leaving "date_created" out of this insert statement
+            // create a sql date object so we can use it in our INSERT statement
+            Calendar calendar = Calendar.getInstance();
+            java.sql.Date startDate = new java.sql.Date(calendar.getTime().getTime());
+
+            // the mysql insert statement
+            String query = "INSERT INTO parkingcompany.vehicle (Color, Brand, Model, CarriagePlate, CreatedOn, ParkingSpace_ID, Finance_ID)"
+                    + " VALUES (?,?,?, ?, ?, ?, ?)";
+
+            // create the mysql insert preparedstatement
+            PreparedStatement preparedStmt = conn.prepareStatement(query);
+            preparedStmt.setString(1, vehicle.getColor());
+            preparedStmt.setString(2, vehicle.getBrand());
+            preparedStmt.setString(3, vehicle.getModel());
+            preparedStmt.setString(4, vehicle.getCarriagePlate());
+            preparedStmt.setDate(5, startDate);
+            preparedStmt.setInt(6, spaceId);
+            preparedStmt.setInt(7, 1);
+
+            // execute the preparedstatement
+            preparedStmt.execute();
+
+            conn.close();
+        } catch (Exception e) {
+            System.err.println("Got an exception!");
+            System.err.println(e.getMessage());
+        }
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void TextFieldColorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TextFieldColorActionPerformed
@@ -672,6 +704,7 @@ public class Main extends javax.swing.JFrame {
     private javax.swing.JTextField TextFieldPlates;
     private javax.swing.JLabel Title;
     private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel13;

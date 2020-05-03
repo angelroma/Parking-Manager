@@ -34,8 +34,7 @@ import javax.xml.bind.annotation.XmlTransient;
 @Table(name = "vehicle")
 @XmlRootElement
 @NamedQueries({
-    @NamedQuery(name = "Vehicle.findAll", query = "SELECT v FROM Vehicle v"),      
-    @NamedQuery(name = "Vehicle.findAllBySpace", query = "SELECT v FROM Vehicle v WHERE v.parkingSpaceID IS NOT NULL"),   
+    @NamedQuery(name = "Vehicle.findAll", query = "SELECT v FROM Vehicle v"),
     @NamedQuery(name = "Vehicle.findById", query = "SELECT v FROM Vehicle v WHERE v.id = :id"),
     @NamedQuery(name = "Vehicle.findByColor", query = "SELECT v FROM Vehicle v WHERE v.color = :color"),
     @NamedQuery(name = "Vehicle.findByBrand", query = "SELECT v FROM Vehicle v WHERE v.brand = :brand"),
@@ -43,7 +42,6 @@ import javax.xml.bind.annotation.XmlTransient;
     @NamedQuery(name = "Vehicle.findByCarriagePlate", query = "SELECT v FROM Vehicle v WHERE v.carriagePlate = :carriagePlate"),
     @NamedQuery(name = "Vehicle.findByCreatedOn", query = "SELECT v FROM Vehicle v WHERE v.createdOn = :createdOn"),
     @NamedQuery(name = "Vehicle.findByFinishedOn", query = "SELECT v FROM Vehicle v WHERE v.finishedOn = :finishedOn")})
-
 public class Vehicle implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -73,9 +71,6 @@ public class Vehicle implements Serializable {
     private Date finishedOn;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "vehicleID")
     private List<Report> reportList;
-    @JoinColumn(name = "Finance_ID", referencedColumnName = "ID")
-    @ManyToOne(optional = false)
-    private Finance financeID;
     @JoinColumn(name = "ParkingSpace_ID", referencedColumnName = "ID")
     @ManyToOne(optional = false)
     private Parkingspace parkingSpaceID;
@@ -159,14 +154,6 @@ public class Vehicle implements Serializable {
 
     public void setReportList(List<Report> reportList) {
         this.reportList = reportList;
-    }
-
-    public Finance getFinanceID() {
-        return financeID;
-    }
-
-    public void setFinanceID(Finance financeID) {
-        this.financeID = financeID;
     }
 
     public Parkingspace getParkingSpaceID() {
