@@ -123,22 +123,49 @@ public class Main extends javax.swing.JFrame {
         ComboBoxSpace = new javax.swing.JComboBox<>();
         jPanel2 = new javax.swing.JPanel();
         jPanel1 = new javax.swing.JPanel();
-        jTextField2 = new javax.swing.JTextField();
-        jTextField1 = new javax.swing.JTextField();
-        jTextField3 = new javax.swing.JTextField();
+        TextFielEmail = new javax.swing.JTextField();
+        TextFielName = new javax.swing.JTextField();
+        TextFielPass = new javax.swing.JTextField();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         BontonIngresarBoleto = new javax.swing.JButton();
         PanelBoletoBaja = new javax.swing.JPanel();
-        jTextField4 = new javax.swing.JTextField();
+        TextFieldBoletoID = new javax.swing.JTextField();
         jLabel9 = new javax.swing.JLabel();
         BotonBoletoBajaCerrar = new javax.swing.JButton();
+        Buscar = new javax.swing.JButton();
+        jPanel5 = new javax.swing.JPanel();
+        LabelEnd = new javax.swing.JLabel();
+        LabelCorreo = new javax.swing.JLabel();
+        LabelCajonNum = new javax.swing.JLabel();
+        jLabel12 = new javax.swing.JLabel();
+        LabelStart = new javax.swing.JLabel();
+        LabelNombre = new javax.swing.JLabel();
+        LabelPlaca = new javax.swing.JLabel();
+        LabelMarca = new javax.swing.JLabel();
+        jLabel23 = new javax.swing.JLabel();
+        LabelColor = new javax.swing.JLabel();
+        LabelModelo = new javax.swing.JLabel();
+        jLabel26 = new javax.swing.JLabel();
         PanelBoletoConsulta = new javax.swing.JPanel();
         jTextField5 = new javax.swing.JTextField();
         ButtonBoletoConsultar = new javax.swing.JButton();
         jLabel10 = new javax.swing.JLabel();
+        jPanel8 = new javax.swing.JPanel();
+        LabelEnd1 = new javax.swing.JLabel();
+        LabelCorreo1 = new javax.swing.JLabel();
+        LabelCajonNum1 = new javax.swing.JLabel();
+        jLabel18 = new javax.swing.JLabel();
+        LabelStart1 = new javax.swing.JLabel();
+        LabelNombre1 = new javax.swing.JLabel();
+        LabelPlaca1 = new javax.swing.JLabel();
+        LabelMarca1 = new javax.swing.JLabel();
+        jLabel24 = new javax.swing.JLabel();
+        LabelColor1 = new javax.swing.JLabel();
+        LabelModelo1 = new javax.swing.JLabel();
+        jLabel27 = new javax.swing.JLabel();
         PanelVehiculos = new javax.swing.JPanel();
         jPanel9 = new javax.swing.JPanel();
         jLabel17 = new javax.swing.JLabel();
@@ -334,25 +361,25 @@ public class Main extends javax.swing.JFrame {
                     .addComponent(jLabel3, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jTextField1)
-                    .addComponent(jTextField3)
+                    .addComponent(TextFielName)
+                    .addComponent(TextFielPass)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 314, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(TextFielEmail, javax.swing.GroupLayout.PREFERRED_SIZE, 314, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(0, 0, Short.MAX_VALUE))))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(TextFielEmail, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel2))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(TextFielName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(TextFielPass, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel3))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
@@ -408,14 +435,115 @@ public class Main extends javax.swing.JFrame {
                     .addComponent(jPanel2, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jPanel6, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(BontonIngresarBoleto, javax.swing.GroupLayout.DEFAULT_SIZE, 145, Short.MAX_VALUE))
+                .addComponent(BontonIngresarBoleto, javax.swing.GroupLayout.DEFAULT_SIZE, 154, Short.MAX_VALUE))
         );
 
         Container.add(PanelBoletoAlta, "card2");
 
+        TextFieldBoletoID.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                TextFieldBoletoIDKeyPressed(evt);
+            }
+        });
+
         jLabel9.setText("# De boleto:");
 
         BotonBoletoBajaCerrar.setText("Cerrar boleto");
+        BotonBoletoBajaCerrar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BotonBoletoBajaCerrarActionPerformed(evt);
+            }
+        });
+
+        Buscar.setText("Buscar");
+        Buscar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BuscarActionPerformed(evt);
+            }
+        });
+
+        LabelEnd.setText("Fecha de salida:");
+
+        LabelCorreo.setText("Correo electronico:");
+
+        LabelCajonNum.setText("Numero:");
+
+        jLabel12.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        jLabel12.setText("Auto:");
+
+        LabelStart.setText("Fecha de ingreso:");
+
+        LabelNombre.setText("Nombre:");
+
+        LabelPlaca.setText("Placa:");
+
+        LabelMarca.setText("Marca:");
+
+        jLabel23.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        jLabel23.setText("Cajon:");
+
+        LabelColor.setText("Color:");
+
+        LabelModelo.setText("Modelo:");
+
+        jLabel26.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        jLabel26.setText("Acomodador:");
+
+        javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
+        jPanel5.setLayout(jPanel5Layout);
+        jPanel5Layout.setHorizontalGroup(
+            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel5Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel26)
+                    .addComponent(LabelEnd)
+                    .addComponent(LabelStart)
+                    .addComponent(LabelPlaca)
+                    .addComponent(LabelModelo)
+                    .addComponent(LabelMarca)
+                    .addGroup(jPanel5Layout.createSequentialGroup()
+                        .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel12)
+                            .addComponent(LabelColor))
+                        .addGap(201, 201, 201)
+                        .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(LabelCajonNum)
+                            .addComponent(jLabel23)))
+                    .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                        .addComponent(LabelNombre, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(LabelCorreo, javax.swing.GroupLayout.Alignment.LEADING)))
+                .addContainerGap())
+        );
+        jPanel5Layout.setVerticalGroup(
+            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel5Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel12)
+                    .addComponent(jLabel23))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(LabelColor)
+                    .addComponent(LabelCajonNum))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(LabelMarca)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(LabelModelo)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(LabelPlaca)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(LabelStart)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(LabelEnd)
+                .addGap(18, 18, 18)
+                .addComponent(jLabel26)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(LabelNombre)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(LabelCorreo)
+                .addContainerGap())
+        );
 
         javax.swing.GroupLayout PanelBoletoBajaLayout = new javax.swing.GroupLayout(PanelBoletoBaja);
         PanelBoletoBaja.setLayout(PanelBoletoBajaLayout);
@@ -423,50 +551,154 @@ public class Main extends javax.swing.JFrame {
             PanelBoletoBajaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(PanelBoletoBajaLayout.createSequentialGroup()
                 .addGap(21, 21, 21)
-                .addComponent(jLabel9)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, 264, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(BotonBoletoBajaCerrar)
-                .addContainerGap(368, Short.MAX_VALUE))
+                .addGroup(PanelBoletoBajaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(PanelBoletoBajaLayout.createSequentialGroup()
+                        .addComponent(jLabel9)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(TextFieldBoletoID, javax.swing.GroupLayout.PREFERRED_SIZE, 264, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(Buscar, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(BotonBoletoBajaCerrar)))
+                .addContainerGap(269, Short.MAX_VALUE))
         );
         PanelBoletoBajaLayout.setVerticalGroup(
             PanelBoletoBajaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(PanelBoletoBajaLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(PanelBoletoBajaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(TextFieldBoletoID, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel9)
-                    .addComponent(BotonBoletoBajaCerrar))
-                .addContainerGap(419, Short.MAX_VALUE))
+                    .addComponent(BotonBoletoBajaCerrar)
+                    .addComponent(Buscar))
+                .addGap(32, 32, 32)
+                .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(118, Short.MAX_VALUE))
         );
 
         Container.add(PanelBoletoBaja, "card3");
 
         ButtonBoletoConsultar.setText("Consultar");
+        ButtonBoletoConsultar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ButtonBoletoConsultarActionPerformed(evt);
+            }
+        });
 
         jLabel10.setText("Consultar Boleto:");
+
+        LabelEnd1.setText("Fecha de salida:");
+
+        LabelCorreo1.setText("Correo electronico:");
+
+        LabelCajonNum1.setText("Numero:");
+
+        jLabel18.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        jLabel18.setText("Auto:");
+
+        LabelStart1.setText("Fecha de ingreso:");
+
+        LabelNombre1.setText("Nombre:");
+
+        LabelPlaca1.setText("Placa:");
+
+        LabelMarca1.setText("Marca:");
+
+        jLabel24.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        jLabel24.setText("Cajon:");
+
+        LabelColor1.setText("Color:");
+
+        LabelModelo1.setText("Modelo:");
+
+        jLabel27.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        jLabel27.setText("Acomodador:");
+
+        javax.swing.GroupLayout jPanel8Layout = new javax.swing.GroupLayout(jPanel8);
+        jPanel8.setLayout(jPanel8Layout);
+        jPanel8Layout.setHorizontalGroup(
+            jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel8Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel27)
+                    .addComponent(LabelEnd1)
+                    .addComponent(LabelStart1)
+                    .addComponent(LabelPlaca1)
+                    .addComponent(LabelModelo1)
+                    .addComponent(LabelMarca1)
+                    .addGroup(jPanel8Layout.createSequentialGroup()
+                        .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel18)
+                            .addComponent(LabelColor1))
+                        .addGap(201, 201, 201)
+                        .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(LabelCajonNum1)
+                            .addComponent(jLabel24)))
+                    .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                        .addComponent(LabelNombre1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(LabelCorreo1, javax.swing.GroupLayout.Alignment.LEADING)))
+                .addContainerGap())
+        );
+        jPanel8Layout.setVerticalGroup(
+            jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel8Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel18)
+                    .addComponent(jLabel24))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(LabelColor1)
+                    .addComponent(LabelCajonNum1))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(LabelMarca1)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(LabelModelo1)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(LabelPlaca1)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(LabelStart1)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(LabelEnd1)
+                .addGap(18, 18, 18)
+                .addComponent(jLabel27)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(LabelNombre1)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(LabelCorreo1)
+                .addContainerGap())
+        );
 
         javax.swing.GroupLayout PanelBoletoConsultaLayout = new javax.swing.GroupLayout(PanelBoletoConsulta);
         PanelBoletoConsulta.setLayout(PanelBoletoConsultaLayout);
         PanelBoletoConsultaLayout.setHorizontalGroup(
             PanelBoletoConsultaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(PanelBoletoConsultaLayout.createSequentialGroup()
+                .addGap(25, 25, 25)
                 .addComponent(jLabel10)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jTextField5, javax.swing.GroupLayout.DEFAULT_SIZE, 410, Short.MAX_VALUE)
+                .addComponent(jTextField5, javax.swing.GroupLayout.DEFAULT_SIZE, 357, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(ButtonBoletoConsultar)
-                .addGap(237, 237, 237))
+                .addGap(265, 265, 265))
+            .addGroup(PanelBoletoConsultaLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jPanel8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         PanelBoletoConsultaLayout.setVerticalGroup(
             PanelBoletoConsultaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(PanelBoletoConsultaLayout.createSequentialGroup()
+                .addGap(11, 11, 11)
                 .addGroup(PanelBoletoConsultaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel10)
                     .addComponent(jTextField5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(ButtonBoletoConsultar)
-                    .addComponent(jLabel10))
-                .addGap(0, 432, Short.MAX_VALUE))
+                    .addComponent(ButtonBoletoConsultar))
+                .addGap(18, 18, 18)
+                .addComponent(jPanel8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 134, Short.MAX_VALUE))
         );
 
         Container.add(PanelBoletoConsulta, "card4");
@@ -521,7 +753,7 @@ public class Main extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 235, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jButton2, javax.swing.GroupLayout.DEFAULT_SIZE, 145, Short.MAX_VALUE)
+                .addComponent(jButton2, javax.swing.GroupLayout.DEFAULT_SIZE, 154, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
@@ -623,7 +855,7 @@ public class Main extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(jLabel4)
                 .addGap(18, 18, 18)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 361, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 370, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
@@ -696,66 +928,11 @@ public class Main extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(Container, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addComponent(Container, javax.swing.GroupLayout.DEFAULT_SIZE, 466, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    private void AddUser() {
-
-    }
-
-    private void AddVehicle() {
-        // TODO add your handling code here:
-        Vehicle vehicle = new Vehicle();
-
-        vehicle.setColor(TextFieldColor.getText());
-        vehicle.setBrand(TextFieldBrand.getText());
-        vehicle.setCarriagePlate(TextFieldPlates.getText());
-        vehicle.setModel(TextFieldModel.getText());
-
-        int spaceId = Integer.parseInt(ComboBoxSpace.getSelectedItem().toString());
-
-        try {
-            // create a mysql database connection
-            String myDriver = "com.mysql.cj.jdbc.Driver";
-            String myUrl = "jdbc:mysql://localhost:3306/parkingcompany?useUnicode=true&serverTimezone=UTC";
-            Class.forName(myDriver);
-            Connection conn = DriverManager.getConnection(myUrl, "root", "Mente!0Unica");
-
-            // note that i'm leaving "date_created" out of this insert statement
-            // create a sql date object so we can use it in our INSERT statement
-            Calendar calendar = Calendar.getInstance();
-            java.sql.Date startDate = new java.sql.Date(calendar.getTime().getTime());
-
-            // the mysql insert statement
-            String query = "INSERT INTO parkingcompany.vehicle (Color, Brand, Model, CarriagePlate, CreatedOn, ParkingSpace_ID)"
-                    + " VALUES (?,?,?, ?, ?, ?)";
-
-            // create the mysql insert preparedstatement
-            PreparedStatement preparedStmt = conn.prepareStatement(query);
-            preparedStmt.setString(1, vehicle.getColor());
-            preparedStmt.setString(2, vehicle.getBrand());
-            preparedStmt.setString(3, vehicle.getModel());
-            preparedStmt.setString(4, vehicle.getCarriagePlate());
-            preparedStmt.setDate(5, startDate);
-            preparedStmt.setInt(6, spaceId);
-
-            // execute the preparedstatement
-            preparedStmt.execute();
-
-            String updateSpace = "UPDATE `parkingcompany`.`parkingspace` SET `Occupied` = 1 WHERE `ID` = ?";
-            PreparedStatement updateStmt = conn.prepareStatement(query);
-            updateStmt.setInt(1, spaceId);
-            updateStmt.executeUpdate();
-
-            conn.close();
-        } catch (Exception e) {
-            System.err.println("Got an exception!");
-            System.err.println(e.getMessage());
-        }
-    }
 
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
@@ -783,10 +960,10 @@ public class Main extends javax.swing.JFrame {
         PanelBoletoAlta.setVisible(false);
         PanelBoletoBaja.setVisible(true);
         PanelBoletoConsulta.setVisible(false);
-        
+
         PanelAcomodadores.setVisible(false);
-          PanelCajones.setVisible(false);
-           PanelVehiculos.setVisible(false);
+        PanelCajones.setVisible(false);
+        PanelVehiculos.setVisible(false);
     }//GEN-LAST:event_MenuItemBoletoBajaActionPerformed
 
     private void MenuItemBoletoAltaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MenuItemBoletoAltaActionPerformed
@@ -794,29 +971,175 @@ public class Main extends javax.swing.JFrame {
         PanelBoletoAlta.setVisible(true);
         PanelBoletoBaja.setVisible(false);
         PanelBoletoConsulta.setVisible(false);
-       
-        
-         PanelAcomodadores.setVisible(false);
-          PanelCajones.setVisible(false);
-           PanelVehiculos.setVisible(false);
+
+        PanelAcomodadores.setVisible(false);
+        PanelCajones.setVisible(false);
+        PanelVehiculos.setVisible(false);
     }//GEN-LAST:event_MenuItemBoletoAltaActionPerformed
 
     private void BontonIngresarBoletoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BontonIngresarBoletoActionPerformed
         // TODO add your handling code here:
-        AddUser();
-        AddVehicle();
+        AddVehicleAndUser();
     }//GEN-LAST:event_BontonIngresarBoletoActionPerformed
+
+    private void AddVehicleAndUser() {
+        // TODO add your handling code here:
+        Vehicle vehicle = new Vehicle();
+
+        vehicle.setColor(TextFieldColor.getText());
+        vehicle.setBrand(TextFieldBrand.getText());
+        vehicle.setCarriagePlate(TextFieldPlates.getText());
+        vehicle.setModel(TextFieldModel.getText());
+
+        int spaceId = Integer.parseInt(ComboBoxSpace.getSelectedItem().toString());
+
+        try {
+            // create a mysql database connection
+            String myDriver = "com.mysql.cj.jdbc.Driver";
+            String myUrl = "jdbc:mysql://localhost:3306/parkingcompany?useUnicode=true&serverTimezone=UTC";
+            Class.forName(myDriver);
+            Connection conn = DriverManager.getConnection(myUrl, "root", "Mente!0Unica");
+
+            // note that i'm leaving "date_created" out of this insert statement
+            // create a sql date object so we can use it in our INSERT statement
+            Calendar calendar = Calendar.getInstance();
+            java.sql.Date startDate = new java.sql.Date(calendar.getTime().getTime());
+
+            // the mysql insert statement
+            String insertVehicleQuery = "INSERT INTO parkingcompany.vehicle (Color, Brand, Model, CarriagePlate, CreatedOn, ParkingSpace_ID)"
+                    + " VALUES (?,?,?, ?, ?, ?)";
+
+            // create the mysql insert preparedstatement
+            PreparedStatement preparedStmt = conn.prepareStatement(insertVehicleQuery);
+            preparedStmt.setString(1, vehicle.getColor());
+            preparedStmt.setString(2, vehicle.getBrand());
+            preparedStmt.setString(3, vehicle.getModel());
+            preparedStmt.setString(4, vehicle.getCarriagePlate());
+            preparedStmt.setDate(5, startDate);
+            preparedStmt.setInt(6, spaceId);
+
+            // execute the preparedstatement
+            preparedStmt.execute();
+
+            String insertUserQuery = "INSERT INTO parkingcompany.user (Name, Email, Password, RoleID, CreatedOn) + VALUES(?,?,?,?,?)";
+            // create the mysql insert preparedstatement
+            PreparedStatement preparedStmtUser = conn.prepareStatement(insertVehicleQuery);
+            preparedStmt.setString(1, TextFielName.getText());
+            preparedStmt.setString(2, TextFielEmail.getText());
+            preparedStmt.setString(3, TextFielPass.getText());
+            preparedStmt.setInt(4, 1);
+            preparedStmt.setDate(5, startDate);
+
+            // execute the preparedstatement
+            preparedStmtUser.execute();
+
+            String updateSpace = "UPDATE `parkingcompany`.`parkingspace` SET `Occupied` = 1 WHERE `ID` = ?";
+            PreparedStatement updateStmt = conn.prepareStatement(insertVehicleQuery);
+            updateStmt.setInt(1, spaceId);
+            updateStmt.executeUpdate();
+
+            conn.close();
+        } catch (Exception e) {
+            System.err.println("Got an exception!");
+            System.err.println(e.getMessage());
+        }
+    }
 
     private void jMenuItem3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem3ActionPerformed
         // TODO add your handling code here:
-         PanelBoletoAlta.setVisible(false);
+        PanelBoletoAlta.setVisible(false);
         PanelBoletoBaja.setVisible(false);
         PanelBoletoConsulta.setVisible(true);
-        
+
         PanelAcomodadores.setVisible(false);
-          PanelCajones.setVisible(false);
-           PanelVehiculos.setVisible(false);
+        PanelCajones.setVisible(false);
+        PanelVehiculos.setVisible(false);
     }//GEN-LAST:event_jMenuItem3ActionPerformed
+
+    private void TextFieldBoletoIDKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TextFieldBoletoIDKeyPressed
+        // TODO add your handling code here:
+
+
+    }//GEN-LAST:event_TextFieldBoletoIDKeyPressed
+
+    private void BuscarBoleto(int ReportID){
+         EntityManagerFactory emfactory = Persistence.createEntityManagerFactory("ParkingSystemPU");
+
+        EntityManager entitymanager = emfactory.createEntityManager();
+        entitymanager.getTransaction().begin();
+
+       
+
+        Report item = entitymanager.createNamedQuery("Report.findById", Report.class).setParameter("id", ReportID).getSingleResult();
+
+        LabelColor.setText("Color: " + item.getVehicleID().getColor());
+        LabelMarca.setText("Marca: " + item.getVehicleID().getBrand());
+        LabelModelo.setText("Modelo: " + item.getVehicleID().getModel());
+        LabelPlaca.setText("Placa: " + item.getVehicleID().getCarriagePlate());
+        LabelStart.setText("Fecha de ingreso: " + item.getVehicleID().getCreatedOn());
+        LabelEnd.setText("Fecha de salida: " + item.getVehicleID().getFinishedOn());
+
+        LabelCajonNum.setText("# Cajon: " + item.getVehicleID().getParkingSpaceID().getId());
+
+        LabelNombre.setText("Nombre: " + item.getUserID().getName());
+        LabelCorreo.setText("Correo: " + item.getUserID().getEmail());
+        
+          LabelColor1.setText("Color: " + item.getVehicleID().getColor());
+        LabelMarca1.setText("Marca: " + item.getVehicleID().getBrand());
+        LabelModelo1.setText("Modelo: " + item.getVehicleID().getModel());
+        LabelPlaca1.setText("Placa: " + item.getVehicleID().getCarriagePlate());
+        LabelStart1.setText("Fecha de ingreso: " + item.getVehicleID().getCreatedOn());
+        LabelEnd1.setText("Fecha de salida: " + item.getVehicleID().getFinishedOn());
+
+        LabelCajonNum1.setText("# Cajon: " + item.getVehicleID().getParkingSpaceID().getId());
+
+        LabelNombre1.setText("Nombre: " + item.getUserID().getName());
+        LabelCorreo1.setText("Correo: " + item.getUserID().getEmail());
+    }
+    
+    private void BuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BuscarActionPerformed
+        // TODO add your handling code here:
+        
+         int ReportID = Integer.parseInt(TextFieldBoletoID.getText());
+       BuscarBoleto(ReportID);
+    }//GEN-LAST:event_BuscarActionPerformed
+
+    private void BotonBoletoBajaCerrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonBoletoBajaCerrarActionPerformed
+        // TODO add your handling code here:
+        try {
+            // create a mysql database connection
+            String myDriver = "com.mysql.cj.jdbc.Driver";
+            String myUrl = "jdbc:mysql://localhost:3306/parkingcompany?useUnicode=true&serverTimezone=UTC";
+            Class.forName(myDriver);
+            Connection conn = DriverManager.getConnection(myUrl, "root", "Mente!0Unica");
+
+            // note that i'm leaving "date_created" out of this insert statement
+            // create a sql date object so we can use it in our INSERT statement
+            Calendar calendar = Calendar.getInstance();
+            java.sql.Date startDate = new java.sql.Date(calendar.getTime().getTime());
+
+             int ReportID = Integer.parseInt(TextFieldBoletoID.getText());
+            
+            // the mysql insert statement
+              String updateReport = "UPDATE `parkingcompany`.`vehicle` SET `FinishedOn` = current_date() WHERE `ID` = ?";
+
+            // create the mysql insert preparedstatement
+            PreparedStatement preparedStmt = conn.prepareStatement(updateReport);
+            preparedStmt.setInt(1, ReportID);
+
+            // execute the preparedstatement
+            preparedStmt.executeUpdate();
+        } catch (Exception e) {
+            System.err.println("Got an exception!");
+            System.err.println(e.getMessage());
+        }
+    }//GEN-LAST:event_BotonBoletoBajaCerrarActionPerformed
+
+    private void ButtonBoletoConsultarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonBoletoConsultarActionPerformed
+        // TODO add your handling code here:
+         int ReportID = Integer.parseInt(jTextField5.getText());
+        BuscarBoleto(ReportID);
+    }//GEN-LAST:event_ButtonBoletoConsultarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -854,9 +1177,28 @@ public class Main extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton BontonIngresarBoleto;
     private javax.swing.JButton BotonBoletoBajaCerrar;
+    private javax.swing.JButton Buscar;
     private javax.swing.JButton ButtonBoletoConsultar;
     private javax.swing.JComboBox<String> ComboBoxSpace;
     private javax.swing.JPanel Container;
+    private javax.swing.JLabel LabelCajonNum;
+    private javax.swing.JLabel LabelCajonNum1;
+    private javax.swing.JLabel LabelColor;
+    private javax.swing.JLabel LabelColor1;
+    private javax.swing.JLabel LabelCorreo;
+    private javax.swing.JLabel LabelCorreo1;
+    private javax.swing.JLabel LabelEnd;
+    private javax.swing.JLabel LabelEnd1;
+    private javax.swing.JLabel LabelMarca;
+    private javax.swing.JLabel LabelMarca1;
+    private javax.swing.JLabel LabelModelo;
+    private javax.swing.JLabel LabelModelo1;
+    private javax.swing.JLabel LabelNombre;
+    private javax.swing.JLabel LabelNombre1;
+    private javax.swing.JLabel LabelPlaca;
+    private javax.swing.JLabel LabelPlaca1;
+    private javax.swing.JLabel LabelStart;
+    private javax.swing.JLabel LabelStart1;
     private javax.swing.JMenu MenuAuto;
     private javax.swing.JMenu MenuBoleto;
     private javax.swing.JMenuItem MenuItemBoletoAlta;
@@ -872,6 +1214,10 @@ public class Main extends javax.swing.JFrame {
     private javax.swing.JTable TableParkincSpaces;
     private javax.swing.JTable TableUsers;
     private javax.swing.JTable TableVehicles;
+    private javax.swing.JTextField TextFielEmail;
+    private javax.swing.JTextField TextFielName;
+    private javax.swing.JTextField TextFielPass;
+    private javax.swing.JTextField TextFieldBoletoID;
     private javax.swing.JTextField TextFieldBrand;
     private javax.swing.JTextField TextFieldColor;
     private javax.swing.JTextField TextFieldModel;
@@ -882,12 +1228,18 @@ public class Main extends javax.swing.JFrame {
     private javax.swing.JDialog jDialog1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
+    private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel15;
     private javax.swing.JLabel jLabel16;
     private javax.swing.JLabel jLabel17;
+    private javax.swing.JLabel jLabel18;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel23;
+    private javax.swing.JLabel jLabel24;
+    private javax.swing.JLabel jLabel26;
+    private javax.swing.JLabel jLabel27;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
@@ -901,16 +1253,14 @@ public class Main extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
+    private javax.swing.JPanel jPanel5;
     private javax.swing.JPanel jPanel6;
     private javax.swing.JPanel jPanel7;
+    private javax.swing.JPanel jPanel8;
     private javax.swing.JPanel jPanel9;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField2;
-    private javax.swing.JTextField jTextField3;
-    private javax.swing.JTextField jTextField4;
     private javax.swing.JTextField jTextField5;
     // End of variables declaration//GEN-END:variables
 }
