@@ -34,6 +34,7 @@ import javax.xml.bind.annotation.XmlTransient;
 @NamedQueries({
     @NamedQuery(name = "Parkingspace.findAll", query = "SELECT p FROM Parkingspace p"),
     @NamedQuery(name = "Parkingspace.findById", query = "SELECT p FROM Parkingspace p WHERE p.id = :id"),
+    @NamedQuery(name = "Parkingspace.findAllAvailable", query = "SELECT p FROM Parkingspace p WHERE p.occupied = 0"),
     @NamedQuery(name = "Parkingspace.findByOccupied", query = "SELECT p FROM Parkingspace p WHERE p.occupied = :occupied"),
     @NamedQuery(name = "Parkingspace.findByCreatedOn", query = "SELECT p FROM Parkingspace p WHERE p.createdOn = :createdOn"),
     @NamedQuery(name = "Parkingspace.findByStatus", query = "SELECT p FROM Parkingspace p WHERE p.status = :status")})
@@ -137,5 +138,5 @@ public class Parkingspace implements Serializable {
     public String toString() {
         return "ParkingSystem.Parkingspace[ id=" + id + " ]";
     }
-    
+
 }

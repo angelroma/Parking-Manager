@@ -71,9 +71,6 @@ public class Vehicle implements Serializable {
     private Date finishedOn;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "vehicleID")
     private List<Report> reportList;
-    @JoinColumn(name = "Finance_ID", referencedColumnName = "ID")
-    @ManyToOne(optional = false)
-    private Finance financeID;
     @JoinColumn(name = "ParkingSpace_ID", referencedColumnName = "ID")
     @ManyToOne(optional = false)
     private Parkingspace parkingSpaceID;
@@ -157,14 +154,6 @@ public class Vehicle implements Serializable {
 
     public void setReportList(List<Report> reportList) {
         this.reportList = reportList;
-    }
-
-    public Finance getFinanceID() {
-        return financeID;
-    }
-
-    public void setFinanceID(Finance financeID) {
-        this.financeID = financeID;
     }
 
     public Parkingspace getParkingSpaceID() {
