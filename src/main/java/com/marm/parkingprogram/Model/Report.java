@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package ParkingSystem;
+package com.marm.parkingprogram.Model;
 
 import java.io.Serializable;
 import javax.persistence.Basic;
@@ -12,8 +12,6 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.Table;
@@ -24,7 +22,7 @@ import javax.xml.bind.annotation.XmlRootElement;
  * @author anr10
  */
 @Entity
-@Table(name = "report")
+@Table(catalog = "parkingcompany", schema = "")
 @XmlRootElement
 @NamedQueries({
     @NamedQuery(name = "Report.findAll", query = "SELECT r FROM Report r"),
@@ -37,20 +35,14 @@ public class Report implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Basic(optional = false)
-    @Column(name = "ID")
+    @Column(nullable = false)
     private Integer id;
     @Basic(optional = false)
-    @Column(name = "TotalTime")
+    @Column(nullable = false)
     private float totalTime;
     @Basic(optional = false)
-    @Column(name = "TotalPrice")
+    @Column(nullable = false)
     private float totalPrice;
-    @JoinColumn(name = "User_ID", referencedColumnName = "ID")
-    @ManyToOne(optional = false)
-    private User userID;
-    @JoinColumn(name = "Vehicle_ID", referencedColumnName = "ID")
-    @ManyToOne(optional = false)
-    private Vehicle vehicleID;
 
     public Report() {
     }
@@ -89,22 +81,6 @@ public class Report implements Serializable {
         this.totalPrice = totalPrice;
     }
 
-    public User getUserID() {
-        return userID;
-    }
-
-    public void setUserID(User userID) {
-        this.userID = userID;
-    }
-
-    public Vehicle getVehicleID() {
-        return vehicleID;
-    }
-
-    public void setVehicleID(Vehicle vehicleID) {
-        this.vehicleID = vehicleID;
-    }
-
     @Override
     public int hashCode() {
         int hash = 0;
@@ -127,7 +103,7 @@ public class Report implements Serializable {
 
     @Override
     public String toString() {
-        return "ParkingSystem.Report[ id=" + id + " ]";
+        return "com.marm.parkingprogram.Model.Report[ id=" + id + " ]";
     }
     
 }

@@ -3,35 +3,29 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package ParkingSystem;
+package com.marm.parkingprogram.Model;
 
 import java.io.Serializable;
 import java.util.Date;
-import java.util.List;
 import javax.persistence.Basic;
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
-import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.xml.bind.annotation.XmlRootElement;
-import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
  * @author anr10
  */
 @Entity
-@Table(name = "vehicle")
+@Table(catalog = "parkingcompany", schema = "")
 @XmlRootElement
 @NamedQueries({
     @NamedQuery(name = "Vehicle.findAll", query = "SELECT v FROM Vehicle v"),
@@ -48,32 +42,26 @@ public class Vehicle implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Basic(optional = false)
-    @Column(name = "ID")
+    @Column(nullable = false)
     private Integer id;
     @Basic(optional = false)
-    @Column(name = "Color")
+    @Column(nullable = false, length = 45)
     private String color;
     @Basic(optional = false)
-    @Column(name = "Brand")
+    @Column(nullable = false, length = 45)
     private String brand;
     @Basic(optional = false)
-    @Column(name = "Model")
+    @Column(nullable = false, length = 45)
     private String model;
     @Basic(optional = false)
-    @Column(name = "CarriagePlate")
+    @Column(nullable = false, length = 45)
     private String carriagePlate;
     @Basic(optional = false)
-    @Column(name = "CreatedOn")
+    @Column(nullable = false)
     @Temporal(TemporalType.TIMESTAMP)
     private Date createdOn;
-    @Column(name = "FinishedOn")
     @Temporal(TemporalType.TIMESTAMP)
     private Date finishedOn;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "vehicleID")
-    private List<Report> reportList;
-    @JoinColumn(name = "ParkingSpace_ID", referencedColumnName = "ID")
-    @ManyToOne(optional = false)
-    private Parkingspace parkingSpaceID;
 
     public Vehicle() {
     }
@@ -147,23 +135,6 @@ public class Vehicle implements Serializable {
         this.finishedOn = finishedOn;
     }
 
-    @XmlTransient
-    public List<Report> getReportList() {
-        return reportList;
-    }
-
-    public void setReportList(List<Report> reportList) {
-        this.reportList = reportList;
-    }
-
-    public Parkingspace getParkingSpaceID() {
-        return parkingSpaceID;
-    }
-
-    public void setParkingSpaceID(Parkingspace parkingSpaceID) {
-        this.parkingSpaceID = parkingSpaceID;
-    }
-
     @Override
     public int hashCode() {
         int hash = 0;
@@ -186,7 +157,7 @@ public class Vehicle implements Serializable {
 
     @Override
     public String toString() {
-        return "ParkingSystem.Vehicle[ id=" + id + " ]";
+        return "com.marm.parkingprogram.Model.Vehicle[ id=" + id + " ]";
     }
     
 }

@@ -3,35 +3,31 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package ParkingSystem;
+package com.marm.parkingprogram.Model;
 
 import java.io.Serializable;
 import java.util.Date;
-import java.util.List;
 import javax.persistence.Basic;
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
-import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+import javax.persistence.UniqueConstraint;
 import javax.xml.bind.annotation.XmlRootElement;
-import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
  * @author anr10
  */
 @Entity
-@Table(name = "user")
+@Table(catalog = "parkingcompany", schema = "", uniqueConstraints = {
+    @UniqueConstraint(columnNames = {"ID"})})
 @XmlRootElement
 @NamedQueries({
     @NamedQuery(name = "User.findAll", query = "SELECT u FROM User u"),
@@ -46,26 +42,21 @@ public class User implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Basic(optional = false)
-    @Column(name = "ID")
+    @Column(nullable = false)
     private Integer id;
     @Basic(optional = false)
-    @Column(name = "Name")
+    @Column(nullable = false, length = 45)
     private String name;
     @Basic(optional = false)
-    @Column(name = "Email")
+    @Column(nullable = false, length = 45)
     private String email;
     @Basic(optional = false)
-    @Column(name = "Password")
+    @Column(nullable = false, length = 45)
     private String password;
     @Basic(optional = false)
-    @Column(name = "CreatedOn")
+    @Column(nullable = false)
     @Temporal(TemporalType.TIMESTAMP)
     private Date createdOn;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "userID")
-    private List<Report> reportList;
-    @JoinColumn(name = "RoleID", referencedColumnName = "ID")
-    @ManyToOne(optional = false)
-    private Role roleID;
 
     public User() {
     }
@@ -122,23 +113,6 @@ public class User implements Serializable {
         this.createdOn = createdOn;
     }
 
-    @XmlTransient
-    public List<Report> getReportList() {
-        return reportList;
-    }
-
-    public void setReportList(List<Report> reportList) {
-        this.reportList = reportList;
-    }
-
-    public Role getRoleID() {
-        return roleID;
-    }
-
-    public void setRoleID(Role roleID) {
-        this.roleID = roleID;
-    }
-
     @Override
     public int hashCode() {
         int hash = 0;
@@ -161,7 +135,7 @@ public class User implements Serializable {
 
     @Override
     public String toString() {
-        return "ParkingSystem.User[ id=" + id + " ]";
+        return "com.marm.parkingprogram.Model.User[ id=" + id + " ]";
     }
     
 }
