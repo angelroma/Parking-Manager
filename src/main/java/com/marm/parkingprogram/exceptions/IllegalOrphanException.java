@@ -1,4 +1,4 @@
-package Controllers.exceptions;
+package com.marm.parkingprogram.exceptions;
 
 import java.util.ArrayList;
 import java.util.List;

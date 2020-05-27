@@ -8,6 +8,7 @@
     <class>com.marm.parkingprogram.Model.Vehicle</class>
     <class>com.marm.parkingprogram.Model.ParkingSpace</class>
     <class>com.marm.parkingprogram.Model.Report_1</class>
+    <class>com.marm.parkingprogram.Model.Operation</class>
     <properties>
       <property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/parkingcompany?useUnicode=true&amp;useJDBCCompliantTimezoneShift=true&amp;useLegacyDatetimeCode=false&amp;serverTimezone=UTC"/>
       <property name="javax.persistence.jdbc.user" value="root"/>

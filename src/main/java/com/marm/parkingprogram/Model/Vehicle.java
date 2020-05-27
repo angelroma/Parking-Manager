@@ -7,7 +7,9 @@ package com.marm.parkingprogram.Model;
 
 import java.io.Serializable;
 import java.util.Date;
+import java.util.List;
 import javax.persistence.Basic;
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -15,17 +17,19 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
  * @author anr10
  */
 @Entity
-@Table(catalog = "parkingcompany", schema = "")
+@Table(name = "Vehicle", catalog = "ParkingCompany", schema = "")
 @XmlRootElement
 @NamedQueries({
     @NamedQuery(name = "Vehicle.findAll", query = "SELECT v FROM Vehicle v"),
@@ -35,33 +39,36 @@ import javax.xml.bind.annotation.XmlRootElement;
     @NamedQuery(name = "Vehicle.findByModel", query = "SELECT v FROM Vehicle v WHERE v.model = :model"),
     @NamedQuery(name = "Vehicle.findByCarriagePlate", query = "SELECT v FROM Vehicle v WHERE v.carriagePlate = :carriagePlate"),
     @NamedQuery(name = "Vehicle.findByCreatedOn", query = "SELECT v FROM Vehicle v WHERE v.createdOn = :createdOn"),
-    @NamedQuery(name = "Vehicle.findByFinishedOn", query = "SELECT v FROM Vehicle v WHERE v.finishedOn = :finishedOn")})
+    @NamedQuery(name = "Vehicle.findByDelivered", query = "SELECT v FROM Vehicle v WHERE v.delivered = :delivered")})
 public class Vehicle implements Serializable {
 
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Basic(optional = false)
-    @Column(nullable = false)
+    @Column(name = "ID", nullable = false)
     private Integer id;
     @Basic(optional = false)
-    @Column(nullable = false, length = 45)
+    @Column(name = "Color", nullable = false, length = 45)
     private String color;
     @Basic(optional = false)
-    @Column(nullable = false, length = 45)
+    @Column(name = "Brand", nullable = false, length = 45)
     private String brand;
     @Basic(optional = false)
-    @Column(nullable = false, length = 45)
+    @Column(name = "Model", nullable = false, length = 45)
     private String model;
     @Basic(optional = false)
-    @Column(nullable = false, length = 45)
+    @Column(name = "CarriagePlate", nullable = false, length = 45)
     private String carriagePlate;
     @Basic(optional = false)
-    @Column(nullable = false)
+    @Column(name = "CreatedOn", nullable = false)
     @Temporal(TemporalType.TIMESTAMP)
     private Date createdOn;
-    @Temporal(TemporalType.TIMESTAMP)
-    private Date finishedOn;
+    @Basic(optional = false)
+    @Column(name = "Delivered", nullable = false)
+    private short delivered;
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "vehicle")
+    private List<Operation> operationList;
 
     public Vehicle() {
     }
@@ -70,13 +77,14 @@ public class Vehicle implements Serializable {
         this.id = id;
     }
 
-    public Vehicle(Integer id, String color, String brand, String model, String carriagePlate, Date createdOn) {
+    public Vehicle(Integer id, String color, String brand, String model, String carriagePlate, Date createdOn, short delivered) {
         this.id = id;
         this.color = color;
         this.brand = brand;
         this.model = model;
         this.carriagePlate = carriagePlate;
         this.createdOn = createdOn;
+        this.delivered = delivered;
     }
 
     public Integer getId() {
@@ -127,12 +135,21 @@ public class Vehicle implements Serializable {
         this.createdOn = createdOn;
     }
 
-    public Date getFinishedOn() {
-        return finishedOn;
+    public short getDelivered() {
+        return delivered;
     }
 
-    public void setFinishedOn(Date finishedOn) {
-        this.finishedOn = finishedOn;
+    public void setDelivered(short delivered) {
+        this.delivered = delivered;
+    }
+
+    @XmlTransient
+    public List<Operation> getOperationList() {
+        return operationList;
+    }
+
+    public void setOperationList(List<Operation> operationList) {
+        this.operationList = operationList;
     }
 
     @Override

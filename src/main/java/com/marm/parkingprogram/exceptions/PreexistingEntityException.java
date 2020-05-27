@@ -1,4 +1,4 @@
-package Controllers.exceptions;
+package com.marm.parkingprogram.exceptions;
 
 public class PreexistingEntityException extends Exception {
     public PreexistingEntityException(String message, Throwable cause) {
